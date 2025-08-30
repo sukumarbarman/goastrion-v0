@@ -1,12 +1,14 @@
 "use client";
 
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import Container from "./Container";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useI18n } from "../lib/i18n";
 
 export default function Navbar({ onOpenLogin, onOpenSignup, onOpenAppt }: any) {
+  const { t } = useI18n();
+
   return (
     <header className="sticky top-0 z-40 bg-black/30 backdrop-blur border-b border-white/5">
       <Container>
@@ -25,31 +27,40 @@ export default function Navbar({ onOpenLogin, onOpenSignup, onOpenAppt }: any) {
 
           {/* Links */}
           <nav className="hidden md:flex gap-6 text-sm text-slate-300">
-            <Link href="/pricing" className="hover:text-white">Pricing</Link>
-            <Link href="/about" className="hover:text-white">About</Link>
-            <Link href="/dashboard" className="hover:text-white">Dashboard</Link>
-            <Link href="/results" className="hover:text-white">Results</Link>
+            <Link href="/pricing" className="hover:text-white">
+              {t("navbar.pricing")}
+            </Link>
+            <Link href="/about" className="hover:text-white">
+              {t("navbar.about")}
+            </Link>
+            <Link href="/dashboard" className="hover:text-white">
+              {t("navbar.dashboard")}
+            </Link>
+            <Link href="/results" className="hover:text-white">
+              {t("navbar.results")}
+            </Link>
           </nav>
 
-          {/* Actions */}
-          <div className="flex gap-2">
+          {/* Right: Language + Actions */}
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher />
             <button
               onClick={onOpenAppt}
               className="hidden md:inline-flex rounded-full border border-cyan-400/40 bg-cyan-500/15 px-3 py-1.5 text-sm text-cyan-200 hover:bg-cyan-500/25"
             >
-              Book Appointment
+              {t("navbar.book")}
             </button>
             <button
               onClick={onOpenLogin}
               className="rounded-full border border-white/10 px-3 py-1.5 text-sm text-slate-200 hover:border-white/20"
             >
-              Login
+              {t("navbar.login")}
             </button>
             <button
               onClick={onOpenSignup}
               className="rounded-full bg-cyan-500 px-3 py-1.5 text-sm text-slate-950 font-semibold hover:bg-cyan-400"
             >
-              Sign Up
+              {t("navbar.signup")}
             </button>
           </div>
         </div>

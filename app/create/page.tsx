@@ -1,5 +1,5 @@
-import CreateChart from "../components/CreateChart";
+import CreateChartClient from "../components/CreateChartClient";
 
 export default function CreatePage() {
-  return <CreateChart />;
+  return <CreateChartClient />;
 }
